@@ -7,15 +7,6 @@ library(leaps)
 library(tree)
 library(randomForest)
 
-# Outline:
-# OLS model for math, lang, math without prev. grades, lang without prev.grades
-# Random Forest for math, lang, math without prev. grades, lang without prev.grades
-# for each of the 8 models, see which variables are important
-# compare all 8 with prediction/ testing
-# decide the best model and best subset of regressors
-# Use k-means or hierarchical clustering to see if there are groups among the students
-# if i have time, i could try svm to separate passing and failing students
-
 ##############################################################################
 #                                                                            #
 #                     Data Merging and Cleaning                              #
@@ -71,6 +62,9 @@ for(i in 1:36){
 }
 names(types) <- colnames(both)
 types
+
+# Writing it to a csv for the final submission
+write.csv(both, 'student_performance_data_merged.csv')
 
 # Since I am predicting Math final grade and language final grade separately, I am subsetting the combined
 # dataset into language and math, where both contain the same social and economic descriptors in columns
